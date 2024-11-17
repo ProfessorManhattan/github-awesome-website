@@ -1,0 +1,63 @@
+<ion-content>
+  <ion-grid [fixed]="true">
+    <ion-row class="header-row">
+      <ion-col size="8">
+        <div class="column-header" (click)="sort('name')">
+          Name
+          <ion-icon
+            *ngIf="sortColumn === 'name'"
+            [name]="sortDirection === 'asc' ? 'arrow-up' : 'arrow-down'"
+          >
+          </ion-icon>
+        </div>
+      </ion-col>
+      <ion-col size="2">
+        <div class="column-header" (click)="sort('stars')">
+          Stars
+          <ion-icon
+            *ngIf="sortColumn === 'stars'"
+            [name]="sortDirection === 'asc' ? 'arrow-up' : 'arrow-down'"
+          >
+          </ion-icon>
+        </div>
+      </ion-col>
+      <ion-col size="2">
+        <div class="column-header" (click)="sort('forks')">
+          Forks
+          <ion-icon
+            *ngIf="sortColumn === 'forks'"
+            [name]="sortDirection === 'asc' ? 'arrow-up' : 'arrow-down'"
+          >
+          </ion-icon>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngFor="let item of displayData" class="data-row">
+      <ion-col size="8">
+        <div style="width: 100%;">
+          <div class="item-title-bar">
+            <a [href]="item.url" target="_blank">{{ item.name }}</a>
+            <a *ngIf="item.homepage" [href]="item.homepage" target="_blank">
+              <ion-icon name="home-outline"></ion-icon>
+            </a>
+            <a [href]="item.list_url" target="_blank">
+              <ion-icon name="list-outline"></ion-icon>
+            </a>
+            <ion-badge *ngIf="item.language">{{ item.language }}</ion-badge>
+            <ion-badge *ngIf="item.license" color="secondary">{{
+              item.license
+            }}</ion-badge>
+          </div>
+          <p>{{ item.description }}</p>
+        </div>
+      </ion-col>
+      <ion-col size="2">{{ item.stars }}</ion-col>
+      <ion-col size="2">{{ item.forks }}</ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-infinite-scroll (ionInfinite)="onIonInfinite($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

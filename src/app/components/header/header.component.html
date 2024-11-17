@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-select
+      slot="start"
+      [(ngModel)]="selectedLanguage"
+      (ionChange)="onLanguageChange($event)"
+      placeholder="Select Language"
+      interface="popover"
+    >
+      <ion-select-option value="">All Languages</ion-select-option>
+      <ion-select-option *ngFor="let lang of languages$ | async" [value]="lang">
+        {{ lang }}
+      </ion-select-option>
+    </ion-select>
+    <ion-searchbar
+      slot="end"
+      [(ngModel)]="searchTerm"
+      (ionInput)="onSearch($event)"
+      placeholder="Search..."
+    >
+    </ion-searchbar>
+    <ion-button slot="end" (click)="reset()" fill="clear">
+      <ion-icon name="refresh-outline" slot="icon-only"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>

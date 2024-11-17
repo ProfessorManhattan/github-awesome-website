@@ -1,0 +1,29 @@
+ion-header {
+  ion-toolbar:first-child {
+    --background: var(--ion-color-primary);
+    --color: var(--ion-color-primary-contrast);
+  }
+
+  ion-toolbar:last-child {
+    --padding-start: 1rem;
+    --padding-end: 1rem;
+    display: flex;
+    align-items: center;
+
+    ion-searchbar {
+      --box-shadow: none;
+      padding: 0;
+      flex: 1;
+      text-align: left;
+    }
+
+    ion-select {
+      min-width: 150px;
+      margin: 0 1rem;
+    }
+
+    ion-button {
+      margin: 0;
+    }
+  }
+}
