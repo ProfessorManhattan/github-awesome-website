@@ -28,7 +28,7 @@ export class RepositoryService {
   constructor(private http: HttpClient) {}
 
   loadData(): Observable<Repository[]> {
-    const url = 'https://public.megabyte.space/github-awesome.json';
+    const url = '/github-awesome.json';
     return this.http.get<Repository[]>(url).pipe(
       map((data) =>
         data.map((item) => ({

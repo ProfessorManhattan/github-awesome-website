@@ -26,7 +26,7 @@
             }
           },
           "options": {
-            "assets": [],
+            "assets": ["src/github-awesome.json"],
             "index": "src/index.html",
             "browser": "src/main.ts",
             "outputPath": "dist/cloudflare",
